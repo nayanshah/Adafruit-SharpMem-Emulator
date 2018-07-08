@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="External Dlls">
+      <UniqueIdentifier>{84a0464f-5985-44f4-9942-7545502578bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_GFX.cpp">
@@ -44,5 +47,22 @@
     <ClInclude Include="Platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\external\cd-5.11.1_Win64_dll15_lib\cd.dll">
+      <Filter>External Dlls</Filter>
+    </None>
+    <None Include="..\..\external\iup-3.25_Win64_dll15_lib\freetype6.dll">
+      <Filter>External Dlls</Filter>
+    </None>
+    <None Include="..\..\external\iup-3.25_Win64_dll15_lib\iup.dll">
+      <Filter>External Dlls</Filter>
+    </None>
+    <None Include="..\..\external\iup-3.25_Win64_dll15_lib\iupcd.dll">
+      <Filter>External Dlls</Filter>
+    </None>
+    <None Include="..\..\external\iup-3.25_Win64_dll15_lib\zlib1.dll">
+      <Filter>External Dlls</Filter>
+    </None>
   </ItemGroup>
 </Project>

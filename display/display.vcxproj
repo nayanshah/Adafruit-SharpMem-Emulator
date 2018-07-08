@@ -88,7 +88,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <AdditionalOptions>Z:\Work\cpp\external\iup-3.25_Win64_dll15_lib\*.lib Z:\Work\cpp\external\cd-5.11.1_Win64_dll15_lib\*.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>..\..\external\iup-3.25_Win64_dll15_lib\*.lib ..\..\external\cd-5.11.1_Win64_dll15_lib\*.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,6 +131,28 @@
     <ClInclude Include="GFXFont.h" />
     <ClInclude Include="IupDisplay.h" />
     <ClInclude Include="Platform.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\external\cd-5.11.1_Win64_dll15_lib\cd.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="..\..\external\iup-3.25_Win64_dll15_lib\freetype6.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="..\..\external\iup-3.25_Win64_dll15_lib\iup.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="..\..\external\iup-3.25_Win64_dll15_lib\iupcd.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="..\..\external\iup-3.25_Win64_dll15_lib\zlib1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
