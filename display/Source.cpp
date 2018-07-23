@@ -9,43 +9,47 @@
 
 #define PI 3.14159265
 
-struct Point
-{
-public:
-    int16_t X, Y;
-    Point(int16_t x, int16_t y)
-    {
-        X = x;
-        Y = y;
-    }
-};
-
-struct ClockHand;
-#include <chrono>
-using namespace std::chrono;
-
-tm getCurrentTime()
-{
-    auto now = system_clock::to_time_t(system_clock::now());
-
-    tm time;
-    localtime_s(&time, &now);
-
-    return time;
-}
-
+#include <ctime>
 
 inline double deg(double degree)
 {
     return (degree) * PI / 180;
 }
 
+void pulse(tm& time)
+{
+    time.tm_sec++;
+    if (time.tm_sec >= 60)
+    {
+        time.tm_sec -= 60;
+        time.tm_min++;
+    }
+
+    if (time.tm_min > 60)
+    {
+        time.tm_min -= 60;
+        time.tm_hour++;
+    }
+
+    if (time.tm_hour > 23)
+    {
+        time.tm_hour -= 24;
+    }
+}
+
+tm getCurrentTime()
+{
+    time_t now = std::time(0);
+    tm time;
+    localtime_s(&time, &now);
+    return time;
+}
 
 class IClockFace
 {
 public:
     virtual ~IClockFace() {}
-    virtual void draw(struct tm const &time) = 0;
+    virtual void draw(struct tm const &time, int color) = 0;
 };
 
 class StandardClockFace : public IClockFace
@@ -55,7 +59,7 @@ class StandardClockFace : public IClockFace
     double mid_x, mid_y;
     static const int16_t DegHour = 30, DegMin = 6, DegSec = 6;
 
-    void DrawHand(double degrees, double length, bool thick = false);
+    void DrawHand(double degrees, double length, bool thick = false, int color = BLACK);
 
 public:
     StandardClockFace(Adafruit_GFX &disp) : display(disp)
@@ -64,10 +68,11 @@ public:
         mid_x = w / 2, mid_y = h / 2;
     }
 
-    void draw(struct tm const &time);
+    void initialize();
+    void draw(struct tm const &time, int color);
 };
 
-void StandardClockFace::DrawHand(double degrees, double length, bool thick)
+void StandardClockFace::DrawHand(double degrees, double length, bool thick, int color)
 {
     auto x = cos(deg(90 - degrees)) * length;
     auto y = sin(deg(90 - degrees)) * length;
@@ -75,20 +80,25 @@ void StandardClockFace::DrawHand(double degrees, double length, bool thick)
     display.drawLine(mid_x, mid_y, mid_x + x, mid_y + y, BLACK);
     if (thick)
     {
-        display.drawLine(mid_x - 1, mid_y, mid_x - 1 + x, mid_y + y, BLACK);
-        display.drawLine(mid_x + 1, mid_y, mid_x + 1 + x, mid_y + y, BLACK);
-        display.drawLine(mid_x, mid_y - 1, mid_x + x, mid_y - 1 + y, BLACK);
-        display.drawLine(mid_x, mid_y + 1, mid_x + x, mid_y + 1 + y, BLACK);
+        display.drawLine(mid_x - 1, mid_y, mid_x - 1 + x, mid_y + y, color);
+        display.drawLine(mid_x + 1, mid_y, mid_x + 1 + x, mid_y + y, color);
+        display.drawLine(mid_x, mid_y - 1, mid_x + x, mid_y - 1 + y, color);
+        display.drawLine(mid_x, mid_y + 1, mid_x + x, mid_y + 1 + y, color);
     }
 }
 
-void StandardClockFace::draw(struct tm const &time)
+void StandardClockFace::initialize()
 {
     auto i = 5;
     auto minorHalfSize = min(w, h) / 2;
 
     display.drawRoundRect(i, i, w - 2 * i, h - 2 * i, minorHalfSize / 2, BLACK);
     display.fillCircle(mid_x, mid_y, 5, BLACK);
+}
+
+void StandardClockFace::draw(struct tm const &time, int color)
+{
+    auto minorHalfSize = min(w, h) / 2;
 
     auto hour = 0.6 * minorHalfSize, minute = 0.75 * minorHalfSize, second = 0.9 * minorHalfSize;
 
@@ -97,28 +107,21 @@ void StandardClockFace::draw(struct tm const &time)
     DrawHand((time.tm_sec) * DegSec, second);
 }
 
-
-void ShowClock()
-{
-    Adafruit_Iup display(WIDTH, HEIGHT);
-    StandardClockFace clockFace(display);
-
-    auto time = getCurrentTime();
-
-    clockFace.draw(time);
-    display.render();
-
-    display.reset();
-}
-
+Adafruit_Iup display(WIDTH, HEIGHT);
+StandardClockFace clockFace(display);
 
 int main()
 {
     //display.print("0x"); //display.println(0xDEADBEEF, HEX);
 
+    auto display_time = getCurrentTime();
     for (int i = 0; i < 5; i++)
     {
-        ShowClock();
+        clockFace.draw(display_time, BLACK);
+        pulse(display_time);
+
+        display.render();
+        display.clearDisplay();
     }
 
     return 0;

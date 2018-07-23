@@ -1,5 +1,7 @@
 #include "IupDisplay.h"
+#include <iup_plus.h>
 
+cdCanvas* IupDisplay::cd_canvas;
 Pixels IupDisplay::_pixels;
 int16_t IupDisplay::_width, IupDisplay::_height;
 
@@ -11,7 +13,7 @@ void IupDisplay::drawPixel(int16_t x, int16_t y, uint16_t color)
 int IupDisplay::canvas_action_cb(Ihandle* canvas)
 {
     unsigned int ri, gi, bi;
-    cdCanvas* cd_canvas = (cdCanvas*)IupGetAttribute(canvas, "cdCanvas");
+    cd_canvas = (cdCanvas*)IupGetAttribute(canvas, "cdCanvas");
     Ihandle* config = (Ihandle*)IupGetAttribute(canvas, "CONFIG");
     const char* background = "208 208 208";
 
@@ -41,16 +43,22 @@ int IupDisplay::canvas_action_cb(Ihandle* canvas)
 
 int IupDisplay::canvas_map_cb(Ihandle* canvas)
 {
-    cdCanvas* cd_canvas = cdCreateCanvas(CD_IUPDBUFFER, canvas);
+    cd_canvas = cdCreateCanvas(CD_IUPDBUFFER, canvas);
     IupSetAttribute(canvas, "cdCanvas", (char*)cd_canvas);
     return IUP_DEFAULT;
 }
 
 int IupDisplay::canvas_unmap_cb(Ihandle* canvas)
 {
-    cdCanvas* cd_canvas = (cdCanvas*)IupGetAttribute(canvas, "cdCanvas");
+    cd_canvas = (cdCanvas*)IupGetAttribute(canvas, "cdCanvas");
     cdKillCanvas(cd_canvas);
     return IUP_DEFAULT;
+}
+
+int IupDisplay::timer_cb(Ihandle*)
+{
+    cdCanvasClear(cd_canvas);
+    return IUP_CLOSE;
 }
 
 int IupDisplay::render()
@@ -66,12 +74,17 @@ int IupDisplay::render()
     IupSetCallback(canvas, "MAP_CB", (Icallback)IupDisplay::canvas_map_cb);
     IupSetCallback(canvas, "UNMAP_CB", (Icallback)IupDisplay::canvas_unmap_cb);
 
+    Iup::Timer timer;
+    timer.SetAttribute("TIME", "2000");
+    timer.SetAttribute("RUN", "YES");
+    timer.SetCallback("ACTION_CB", (Icallback)IupDisplay::timer_cb);
+
     vbox = IupVbox(
         canvas,
         NULL);
 
     dlg = IupDialog(vbox);
-    IupSetAttribute(dlg, "TITLE", "Virtual Display");
+    IupSetAttribute(dlg, "TITLE", "Simulated Display");
     IupSetAttribute(dlg, "SIZE", "150x200");
 
     IupShowXY(dlg, IUP_CENTER, IUP_CENTER);
@@ -83,7 +96,8 @@ int IupDisplay::render()
     return 0;
 }
 
-int IupDisplay::reset()
+int IupDisplay::clearDisplay()
 {
+    _pixels.clear();
     return 0;
 }

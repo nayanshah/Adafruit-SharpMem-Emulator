@@ -21,10 +21,12 @@ public:
     }
 
     int render();
-    int reset();
+    int clearDisplay();
     void drawPixel(int16_t x, int16_t y, uint16_t color);
 
 private:
+    static cdCanvas *cd_canvas;
+
     static Pixels _pixels;
     static int16_t _width;
     static int16_t _height;
@@ -32,4 +34,5 @@ private:
     static int canvas_action_cb(Ihandle* canvas);
     static int canvas_map_cb(Ihandle* canvas);
     static int canvas_unmap_cb(Ihandle* canvas);
+    static int timer_cb(Ihandle*);
 };
