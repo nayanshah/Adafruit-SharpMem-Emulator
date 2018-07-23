@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>Z:\Work\cpp\external\cd-5.11.1_Win64_dll15_lib\include;Z:\Work\cpp\external\iup-3.25_Win64_dll15_lib\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\external\cd-5.11.1_Win64_dll15_lib\include;..\..\external\iup-3.25_Win64_dll15_lib\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
