@@ -22,7 +22,7 @@ void IupDisplay::begin()
 
 void IupDisplay::drawPixel(int16_t x, int16_t y, uint16_t color)
 {
-    cdCanvasPixel(cd_canvas, x, y, 0);
+    cdCanvasPixel(cd_canvas, x, _height - y, 0);
 }
 
 int IupDisplay::canvas_action_cb(Ihandle* canvas)
