@@ -16,7 +16,3 @@ public:
 };
 
 class __FlashStringHelper {};
-
-// IUP dependencies
-int ShowMessage();
-

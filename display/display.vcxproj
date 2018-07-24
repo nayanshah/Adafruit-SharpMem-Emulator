@@ -121,6 +121,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Adafruit_GFX.cpp" />
+    <ClCompile Include="ClockFace.cpp" />
     <ClCompile Include="glcdfont.c" />
     <ClCompile Include="IupDisplay.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -128,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="Adafruit_GFX.h" />
     <ClInclude Include="Adafruit_Iup.h" />
+    <ClInclude Include="ClockFace.h" />
     <ClInclude Include="DisplayDriver.h" />
     <ClInclude Include="GFXFont.h" />
     <ClInclude Include="IupDisplay.h" />
