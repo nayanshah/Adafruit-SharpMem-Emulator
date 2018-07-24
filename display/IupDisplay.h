@@ -6,6 +6,7 @@
 #include <iup.h>
 #include <cd.h>
 #include <cdiup.h>
+#include <thread>
 
 using namespace std;
 
@@ -20,6 +21,7 @@ public:
         _height = height;
     }
 
+    void begin();
     int render();
     int clearDisplay();
     void drawPixel(int16_t x, int16_t y, uint16_t color);
@@ -36,4 +38,6 @@ private:
     static int canvas_map_cb(Ihandle* canvas);
     static int canvas_unmap_cb(Ihandle* canvas);
     static int timer_cb(Ihandle*);
+
+    std::thread mainLoopThread;
 };

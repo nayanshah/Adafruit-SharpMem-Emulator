@@ -4,6 +4,22 @@
 cdCanvas* IupDisplay::cd_canvas;
 int16_t IupDisplay::_width, IupDisplay::_height;
 
+void IupDisplay::begin()
+{
+    mainLoopThread = std::thread([this]()
+    {
+        printf("Starting render\n");
+        render();
+        printf("End render\n");
+    });
+
+    mainLoopThread.detach();
+
+    // This is a hack. We need to wait for the render to complete before
+    // we can return.
+    std::this_thread::sleep_for(100ms);
+}
+
 void IupDisplay::drawPixel(int16_t x, int16_t y, uint16_t color)
 {
     cdCanvasPixel(cd_canvas, x, y, 0);
@@ -29,8 +45,6 @@ int IupDisplay::canvas_action_cb(Ihandle* canvas)
     cdCanvasForeground(cd_canvas, CD_BLACK);
     cdCanvasLineWidth(cd_canvas, 1);
     cdCanvasLineStyle(cd_canvas, CD_CONTINUOUS);
-
-    cdCanvasRect(cd_canvas, 0, IupDisplay::_width, 0, IupDisplay::_height);
 
     cdCanvasFlush(cd_canvas);
 

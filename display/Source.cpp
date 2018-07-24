@@ -10,6 +10,8 @@
 
 #define PI 3.14159265
 
+using namespace std::chrono_literals;
+
 #include <ctime>
 
 inline double deg(double degree)
@@ -111,38 +113,26 @@ void StandardClockFace::draw(struct tm const &time, uint16_t color)
 Adafruit_Iup display(WIDTH, HEIGHT);
 StandardClockFace clockFace(display);
 
-std::thread iupLoopThread;
-
 int main()
 {
     //display.print("0x"); //display.println(0xDEADBEEF, HEX);
-    using namespace std::chrono_literals;
-
     auto display_time = getCurrentTime();
 
-    // Start timer in a different thread
-    iupLoopThread = std::thread([]()
-    {
-        printf("Starting render\n");
-        display.render();
-        printf("End render\n");
-    });
+    display.begin();
 
-    for (int i = 0; true; i++)
+    for (;;)
     {
         printf("Drawing...\n");
-        clockFace.initialize();
+
+        display.clearDisplay();
+        clockFace.initialize(); // draws a box. need a better name.
         clockFace.draw(display_time, BLACK);
         display.refresh();
+
         pulse(display_time);
 
-        // display.render();
-
         std::this_thread::sleep_for(1s);
-        display.clearDisplay();
     }
-
-    iupLoopThread.join();
 
     return 0;
 }
