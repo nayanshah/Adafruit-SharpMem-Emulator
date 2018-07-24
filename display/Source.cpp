@@ -110,7 +110,7 @@ void StandardClockFace::draw(struct tm const &time, uint16_t color)
     DrawHand((time.tm_sec) * DegSec, second, color);
 }
 
-Adafruit_Iup display(WIDTH, HEIGHT);
+DisplayDriver display(WIDTH, HEIGHT);
 StandardClockFace clockFace(display);
 
 int main()
