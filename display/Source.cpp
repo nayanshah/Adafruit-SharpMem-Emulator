@@ -85,13 +85,14 @@ void StandardClockFace::DrawHand(double degrees, double length, bool thick, uint
     auto x = cos(deg(90 - degrees)) * length;
     auto y = sin(deg(90 - degrees)) * length;
 
-    display.drawLine(mid_x, mid_y, mid_x + x, mid_y + y, color);
+    display.drawLine(static_cast<int16_t>(mid_x), static_cast<int16_t>(mid_y), static_cast<int16_t>(mid_x + x), static_cast<int16_t>(mid_y + y), color);
+
     if (thick)
     {
-        display.drawLine(mid_x - 1, mid_y, mid_x - 1 + x, mid_y + y, color);
-        display.drawLine(mid_x + 1, mid_y, mid_x + 1 + x, mid_y + y, color);
-        display.drawLine(mid_x, mid_y - 1, mid_x + x, mid_y - 1 + y, color);
-        display.drawLine(mid_x, mid_y + 1, mid_x + x, mid_y + 1 + y, color);
+        display.drawLine(static_cast<int16_t>(mid_x - 1), static_cast<int16_t>(mid_y),     static_cast<int16_t>(mid_x - 1 + x), static_cast<int16_t>(mid_y + y),     color);
+        display.drawLine(static_cast<int16_t>(mid_x + 1), static_cast<int16_t>(mid_y),     static_cast<int16_t>(mid_x + 1 + x), static_cast<int16_t>(mid_y + y),     color);
+        display.drawLine(static_cast<int16_t>(mid_x),     static_cast<int16_t>(mid_y - 1), static_cast<int16_t>(mid_x + x),     static_cast<int16_t>(mid_y - 1 + y), color);
+        display.drawLine(static_cast<int16_t>(mid_x),     static_cast<int16_t>(mid_y + 1), static_cast<int16_t>(mid_x + x),     static_cast<int16_t>(mid_y + 1 + y), color);
     }
 }
 
@@ -100,7 +101,7 @@ void StandardClockFace::initialize()
     auto i = 5;
 
     display.drawRoundRect(i, i, w - 2 * i, h - 2 * i, minorHalfSize / 2, BLACK);
-    display.fillCircle(mid_x, mid_y, 5, BLACK);
+    display.fillCircle(static_cast<int16_t>(mid_x), static_cast<int16_t>(mid_y), static_cast<int16_t>(5), BLACK);
 }
 
 void StandardClockFace::draw(struct tm const &time, uint16_t color)
