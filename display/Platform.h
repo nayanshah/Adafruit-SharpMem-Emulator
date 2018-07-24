@@ -10,7 +10,7 @@ typedef bool boolean;
 
 class Print {
 public:
-    size_t print(const char[]) {
+    virtual size_t print(const char[]) {
         return 0;
     };
 };

@@ -45,7 +45,6 @@ StandardClockFace clockFace(display);
 
 int main()
 {
-    //display.print("0x"); //display.println(0xDEADBEEF, HEX);
 
     auto display_time = getCurrentTime();
 
@@ -59,7 +58,10 @@ int main()
         clockFace.initialize(BLACK); // draws a box. need a better name.
         clockFace.draw(display_time, BLACK);
 
-        display.print("Hello"); //display.println(0xDEADBEEF, HEX);
+        display.setTextSize(1);
+        display.setCursor(WIDTH / 2 - 15, HEIGHT / 2 - 40);
+        display.print("Nexus");
+
         display.refresh();
 
         pulse(display_time);
