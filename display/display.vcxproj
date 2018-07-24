@@ -128,6 +128,7 @@
   <ItemGroup>
     <ClInclude Include="Adafruit_GFX.h" />
     <ClInclude Include="Adafruit_Iup.h" />
+    <ClInclude Include="DisplayDriver.h" />
     <ClInclude Include="GFXFont.h" />
     <ClInclude Include="IupDisplay.h" />
     <ClInclude Include="Platform.h" />
