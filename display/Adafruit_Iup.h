@@ -11,13 +11,8 @@ public:
     {
     }
 
-
     void drawPixel(int16_t x, int16_t y, uint16_t color)
     {
         IupDisplay::drawPixel(x, y, color);
-    }
-
-    void refresh()
-    {
     }
 };

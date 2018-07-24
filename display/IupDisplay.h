@@ -23,6 +23,7 @@ public:
     int render();
     int clearDisplay();
     void drawPixel(int16_t x, int16_t y, uint16_t color);
+    void refresh();
 
 private:
     static cdCanvas *cd_canvas;

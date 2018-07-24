@@ -1,5 +1,6 @@
 #include "Adafruit_Iup.h"
 #include <algorithm>
+#include <thread>
 
 #define WIDTH 144
 #define HEIGHT 168
@@ -110,19 +111,38 @@ void StandardClockFace::draw(struct tm const &time, int color)
 Adafruit_Iup display(WIDTH, HEIGHT);
 StandardClockFace clockFace(display);
 
+std::thread iupLoopThread;
+
 int main()
 {
     //display.print("0x"); //display.println(0xDEADBEEF, HEX);
+    using namespace std::chrono_literals;
 
     auto display_time = getCurrentTime();
-    for (int i = 0; i < 5; i++)
+
+    // Start timer in a different thread
+    iupLoopThread = std::thread([]()
     {
+        printf("Starting render\n");
+        display.render();
+        printf("End render\n");
+    });
+
+    for (int i = 0; true; i++)
+    {
+        printf("Drawing...\n");
+        clockFace.initialize();
         clockFace.draw(display_time, BLACK);
+        display.refresh();
         pulse(display_time);
 
-        display.render();
+        // display.render();
+
+        std::this_thread::sleep_for(1s);
         display.clearDisplay();
     }
+
+    iupLoopThread.join();
 
     return 0;
 }
