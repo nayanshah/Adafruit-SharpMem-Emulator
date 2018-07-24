@@ -8,9 +8,8 @@ void IupDisplay::begin()
 {
     mainLoopThread = std::thread([this]()
     {
-        printf("Starting render\n");
         render();
-        printf("End render\n");
+        std::exit(0);
     });
 
     mainLoopThread.detach();
@@ -27,8 +26,6 @@ void IupDisplay::drawPixel(int16_t x, int16_t y, uint16_t color)
 
 int IupDisplay::canvas_action_cb(Ihandle* canvas)
 {
-    printf("canvas action\n");
-
     unsigned int ri, gi, bi;
     cd_canvas = (cdCanvas*)IupGetAttribute(canvas, "cdCanvas");
     Ihandle* config = (Ihandle*)IupGetAttribute(canvas, "CONFIG");
