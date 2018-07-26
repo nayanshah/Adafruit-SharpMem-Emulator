@@ -2,8 +2,7 @@
 
 void NexusClock::loop(void)
 {
-    display.clearDisplay();
-    clockFace.initialize(BLACK); // draws a box. need a better name.
+    clockFace.initialize(BLACK);
     clockFace.draw(displayTime, BLACK);
 
     display.setTextSize(1);
@@ -11,13 +10,13 @@ void NexusClock::loop(void)
     display.setCursor(display.width() / 2 - 15, display.height() / 2 - 40);
     display.print("Nexus");
 
-    pulse(displayTime);
+    display.refresh();
+    delay(900); // to account for slow refresh rate
 
-    // Screen must be refreshed at least once per second
-    for (int j = 0; j < 2; j++) {
-        display.refresh();
-        delay(500); // 1/2 sec delay
-    } // x2 = 1 second pause between rotations
+    clockFace.draw(displayTime, WHITE);
+    display.refresh();
+
+    pulse(displayTime);
 }
 
 bool NexusClock::setup(void)

@@ -23,7 +23,7 @@ bool IupDisplay::begin()
 
 void IupDisplay::drawPixel(int16_t x, int16_t y, uint16_t color)
 {
-    cdCanvasPixel(cd_canvas, x, _height - y, 0);
+    cdCanvasPixel(cd_canvas, x, _height - y, color > 0 ? CD_WHITE : CD_BLACK);
 }
 
 int IupDisplay::canvas_action_cb(Ihandle* canvas)
@@ -31,7 +31,7 @@ int IupDisplay::canvas_action_cb(Ihandle* canvas)
     unsigned int ri, gi, bi;
     cd_canvas = (cdCanvas*)IupGetAttribute(canvas, "cdCanvas");
     Ihandle* config = (Ihandle*)IupGetAttribute(canvas, "CONFIG");
-    const char* background = "208 208 208";
+    const char* background = "255 255 255";
 
     cdCanvasActivate(cd_canvas);
 

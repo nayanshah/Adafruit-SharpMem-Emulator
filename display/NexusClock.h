@@ -6,10 +6,10 @@
 #define WHITE 1
 
 #ifndef ARDUINO
-
-using namespace std::chrono_literals;
-#define delay(time) std::this_thread::sleep_for(0.5s)
-
+inline void delay(uint16_t ms)
+{
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+};
 #endif
 
 class NexusClock
