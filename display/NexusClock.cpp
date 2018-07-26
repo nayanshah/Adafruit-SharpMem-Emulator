@@ -3,6 +3,9 @@
 void NexusClock::loop(void)
 {
     clockFace.initialize(BLACK);
+
+    clockFace.draw(displayTime, WHITE);
+    pulse(displayTime);
     clockFace.draw(displayTime, BLACK);
 
     display.setTextSize(1);
@@ -12,11 +15,6 @@ void NexusClock::loop(void)
 
     display.refresh();
     delay(900); // to account for slow refresh rate
-
-    clockFace.draw(displayTime, WHITE);
-    display.refresh();
-
-    pulse(displayTime);
 }
 
 bool NexusClock::setup(void)
