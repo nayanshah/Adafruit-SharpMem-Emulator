@@ -8,11 +8,6 @@ void NexusClock::loop(void)
     pulse(displayTime);
     clockFace.draw(displayTime, BLACK);
 
-    display.setTextSize(1);
-    display.setTextColor(BLACK);
-    display.setCursor(display.width() / 2 - 15, display.height() / 2 - 40);
-    display.print("Nexus");
-
     display.refresh();
     delay(900); // to account for slow refresh rate
 }
@@ -57,7 +52,7 @@ void pulse(tm& time)
 NexusClock* GetNexusClock(tm& time)
 {
     DisplayDriver* display = GetDisplayDriver();
-    StandardClockFace* clockFace = new StandardClockFace(*display);
+    IClockFace* clockFace = new DigitalClockFace(*display);
     NexusClock* clk = new NexusClock(*display, *clockFace, time);
     return clk;
 }

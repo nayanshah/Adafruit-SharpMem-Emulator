@@ -29,4 +29,25 @@ void StandardClockFace::draw(const tm& time, uint16_t color)
     DrawHand(((time.tm_hour % 12) * DegHour) + time.tm_min / 2, hour, true, color);
     DrawHand((time.tm_min) * DegMin + time.tm_sec / 10, minute, true, color);
     DrawHand((time.tm_sec) * DegSec, second, false, color);
+
+    display.setTextSize(1);
+    display.setTextColor(color);
+    display.setCursor(display.width() / 2 - 15, display.height() / 2 - 40);
+    display.print("Nexus");
+}
+
+void DigitalClockFace::initialize(uint16_t color)
+{
+}
+
+void DigitalClockFace::draw(const tm& time, uint16_t color)
+{
+    char tm[9];
+    sprintf_s(tm, "%02d:%02d:%02d", time.tm_hour, time.tm_min, time.tm_sec);
+    tm[8] = '\0';
+
+    display.setTextSize(2);
+    display.setTextColor(color);
+    display.setCursor(25, display.height() / 2 - 40);
+    display.print(tm);
 }
