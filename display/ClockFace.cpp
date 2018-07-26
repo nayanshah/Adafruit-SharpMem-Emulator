@@ -38,6 +38,8 @@ void StandardClockFace::draw(const tm& time, uint16_t color)
 
 void DigitalClockFace::initialize(uint16_t color)
 {
+    auto i = 5;
+    display.drawRect(i, i, w - 2 * i, h - 2 * i, color);
 }
 
 void DigitalClockFace::draw(const tm& time, uint16_t color)
@@ -48,6 +50,6 @@ void DigitalClockFace::draw(const tm& time, uint16_t color)
 
     display.setTextSize(2);
     display.setTextColor(color);
-    display.setCursor(25, display.height() / 2 - 40);
+    display.setCursor(25, display.height() / 2 - 10);
     display.print(tm);
 }
