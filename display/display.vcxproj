@@ -124,6 +124,7 @@
     <ClCompile Include="ClockFace.cpp" />
     <ClCompile Include="glcdfont.c" />
     <ClCompile Include="IupDisplay.cpp" />
+    <ClCompile Include="NexusClock.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +134,7 @@
     <ClInclude Include="DisplayDriver.h" />
     <ClInclude Include="GFXFont.h" />
     <ClInclude Include="IupDisplay.h" />
+    <ClInclude Include="NexusClock.h" />
     <ClInclude Include="Platform.h" />
   </ItemGroup>
   <ItemGroup>

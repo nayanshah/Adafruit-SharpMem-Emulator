@@ -1,9 +1,18 @@
 #pragma once
+#include <ctime>
 #include <cinttypes>
+
+#ifdef ARDUINO
+#include <Adafruit_GFX.h>
+#else
+
 #include <algorithm>
 #include "Adafruit_GFX.h"
 
 #define PI 3.14159265
+using namespace std;
+#endif
+
 
 inline double deg(double degree)
 {
@@ -14,7 +23,8 @@ class IClockFace
 {
 public:
     virtual ~IClockFace() {}
-    virtual void draw(struct tm const &time, uint16_t color) = 0;
+    virtual void initialize(uint16_t color) = 0;
+    virtual void draw(const tm& time, uint16_t color) = 0;
 };
 
 class StandardClockFace : public IClockFace
@@ -34,10 +44,10 @@ public:
     {
         w = display.width(), h = display.height();
         mid_x = w / 2, mid_y = h / 2;
-        minorHalfSize = ::std::min(w, h) / 2;
+        minorHalfSize = min(w, h) / 2;
         hour = 0.6 * minorHalfSize, minute = 0.75 * minorHalfSize, second = 0.9 * minorHalfSize;
     }
 
     void initialize(uint16_t color);
-    void draw(struct tm const &time, uint16_t color);
+    void draw(const tm& time, uint16_t color);
 };

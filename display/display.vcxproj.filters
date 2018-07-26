@@ -33,6 +33,9 @@
     <ClCompile Include="ClockFace.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NexusClock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Adafruit_GFX.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ClockFace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NexusClock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -4,7 +4,7 @@
 cdCanvas* IupDisplay::cd_canvas;
 int16_t IupDisplay::_width, IupDisplay::_height;
 
-void IupDisplay::begin()
+bool IupDisplay::begin()
 {
     mainLoopThread = std::thread([this]()
     {
@@ -17,6 +17,8 @@ void IupDisplay::begin()
     // This is a hack. We need to wait for the render to complete before
     // we can return.
     std::this_thread::sleep_for(100ms);
+
+    return true;
 }
 
 void IupDisplay::drawPixel(int16_t x, int16_t y, uint16_t color)

@@ -24,7 +24,7 @@ void StandardClockFace::initialize(uint16_t color)
     display.fillCircle(static_cast<int16_t>(mid_x), static_cast<int16_t>(mid_y), static_cast<int16_t>(5), color);
 }
 
-void StandardClockFace::draw(struct tm const &time, uint16_t color)
+void StandardClockFace::draw(const tm& time, uint16_t color)
 {
     DrawHand(((time.tm_hour % 12) * DegHour) + time.tm_min / 2, hour, true, color);
     DrawHand((time.tm_min) * DegMin + time.tm_sec / 10, minute, true, color);
