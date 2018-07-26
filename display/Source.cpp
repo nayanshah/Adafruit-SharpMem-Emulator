@@ -11,7 +11,7 @@ tm getCurrentTime()
 int main()
 {
     auto display_time = getCurrentTime();
-    NexusClock* clk  = GetNexusClock(display_time);
+    NexusClock* clk  = GetNexusClock(display_time, 1);
 
     clk->setup();
 

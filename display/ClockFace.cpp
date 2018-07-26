@@ -1,5 +1,10 @@
 #include "ClockFace.h"
 
+#ifndef ARDUINO
+#define sprintf sprintf_s
+#endif // !ARDUINO
+
+
 void StandardClockFace::DrawHand(double degrees, double length, bool thick, uint16_t color)
 {
     auto x = cos(deg(90 - degrees)) * length;
@@ -45,8 +50,13 @@ void DigitalClockFace::initialize(uint16_t color)
 void DigitalClockFace::draw(const tm& time, uint16_t color)
 {
     char tm[9];
-    sprintf_s(tm, "%02d:%02d:%02d", time.tm_hour, time.tm_min, time.tm_sec);
+    sprintf(tm, "%02d:%02d:%02d", time.tm_hour, time.tm_min, time.tm_sec);
     tm[8] = '\0';
+
+    display.setTextSize(1);
+    display.setTextColor(color);
+    display.setCursor(display.width() / 2 - 15, display.height() / 2 - 40);
+    display.print("Nexus");
 
     display.setTextSize(2);
     display.setTextColor(color);

@@ -49,12 +49,23 @@ void pulse(tm& time)
     }
 }
 
-NexusClock* GetNexusClock(tm& time)
+NexusClock* GetNexusClock(tm& time, int face)
 {
     DisplayDriver* display = GetDisplayDriver();
-    IClockFace* clockFace = new DigitalClockFace(*display);
+    IClockFace* clockFace = GetClockFace(face, display);
     NexusClock* clk = new NexusClock(*display, *clockFace, time);
     return clk;
+}
+
+IClockFace* GetClockFace(int id, DisplayDriver* display)
+{
+    switch (id)
+    {
+    case 1:
+        return new DigitalClockFace(*display);
+    default:
+        return new StandardClockFace(*display);
+    }
 }
 
 DisplayDriver* GetDisplayDriver()

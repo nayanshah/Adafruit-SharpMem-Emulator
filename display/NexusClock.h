@@ -25,4 +25,5 @@ public:
 };
 
 void pulse(tm& time);
-NexusClock* GetNexusClock(tm& time);
+IClockFace* GetClockFace(int id, DisplayDriver* display);
+NexusClock* GetNexusClock(tm& time, int face = 0);
