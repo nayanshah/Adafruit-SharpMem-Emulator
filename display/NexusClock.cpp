@@ -71,7 +71,7 @@ IClockFace* GetClockFace(int id, DisplayDriver* display)
 
 DisplayDriver* GetDisplayDriver()
 {
-#ifdef ARDUINO
+#if ARDUINO >=100
     // any pins can be used
 #define SHARP_SCK  4
 #define SHARP_MOSI 5

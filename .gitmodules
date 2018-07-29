@@ -1,0 +1,3 @@
+[submodule "display/AdafruitGFX"]
+	path = display/AdafruitGFX
+	url = https://github.com/nayanshah/Adafruit-GFX-Library.git

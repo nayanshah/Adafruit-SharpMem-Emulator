@@ -2,10 +2,14 @@
 
 // Partial implementation of Arduino's WProgram.h based on: https://github.com/Railstars/ARMduino/blob/master/WProgram.h
 
-#include <cmath>
+// Defining this variable for downstream checks to treat custom platform as Arduino
+#define ARDUINO 0
+
 #include <cinttypes>
+#include <cmath>
 #include <cstdio>
 #include <cstring>
+#include <thread>
 
 #define PI 3.1415926535897932384626433832795
 #define HALF_PI 1.5707963267948966192313216916398
@@ -23,6 +27,11 @@
 #define strncpy strncpy_s;
 
 typedef bool boolean;
+
+inline void delay(uint16_t ms)
+{
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+};
 
 // Following types are used by Adafruit's GFX library
 

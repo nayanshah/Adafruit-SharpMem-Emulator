@@ -6,7 +6,7 @@
 // This will set up the DisplayDriver class based on whether you are using the
 // emulator, or coding for the real watch.
 
-#ifdef ARDUINO
+#if ARDUINO >= 100
 #include <Adafruit_SharpMem.h>
 using DisplayDriver = Adafruit_SharpMem;
 

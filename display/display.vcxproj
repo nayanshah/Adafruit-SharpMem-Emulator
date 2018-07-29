@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\..\external\cd-5.11.1_Win64_dll15_lib\include;..\..\external\iup-3.25_Win64_dll15_lib\include;$(IncludePath)</IncludePath>
+    <IncludePath>AdafruitGFX;.;..\..\external\cd-5.11.1_Win64_dll15_lib\include;..\..\external\iup-3.25_Win64_dll15_lib\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -120,19 +120,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Adafruit_GFX.cpp" />
+    <ClCompile Include="AdafruitGFX\Adafruit_GFX.cpp" />
+    <ClCompile Include="AdafruitGFX\glcdfont.c" />
     <ClCompile Include="ClockFace.cpp" />
-    <ClCompile Include="glcdfont.c" />
     <ClCompile Include="IupDisplay.cpp" />
     <ClCompile Include="NexusClock.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Adafruit_GFX.h" />
+    <ClInclude Include="AdafruitGFX\Adafruit_GFX.h" />
+    <ClInclude Include="AdafruitGFX\gfxfont.h" />
     <ClInclude Include="Adafruit_Iup.h" />
     <ClInclude Include="ClockFace.h" />
     <ClInclude Include="DisplayDriver.h" />
-    <ClInclude Include="GFXFont.h" />
     <ClInclude Include="IupDisplay.h" />
     <ClInclude Include="NexusClock.h" />
     <ClInclude Include="WProgram.h" />

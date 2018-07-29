@@ -1,11 +1,6 @@
 #pragma once
 #include <ctime>
-
-#ifdef ARDUINO
 #include <Adafruit_GFX.h>
-#else
-#include "Adafruit_GFX.h"
-#endif
 
 class IClockFace
 {

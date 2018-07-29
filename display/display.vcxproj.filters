@@ -18,12 +18,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Adafruit_GFX.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="glcdfont.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IupDisplay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -36,15 +30,15 @@
     <ClCompile Include="NexusClock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AdafruitGFX\Adafruit_GFX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdafruitGFX\glcdfont.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Adafruit_GFX.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Adafruit_Iup.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GFXFont.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IupDisplay.h">
@@ -60,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WProgram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdafruitGFX\Adafruit_GFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdafruitGFX\gfxfont.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

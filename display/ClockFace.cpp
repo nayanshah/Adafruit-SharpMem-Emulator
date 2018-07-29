@@ -1,6 +1,6 @@
 #include "ClockFace.h"
 
-#ifndef ARDUINO
+#if ARDUINO < 100
 #define sprintf sprintf_s
 #endif // !ARDUINO
 

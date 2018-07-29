@@ -5,13 +5,6 @@
 #define BLACK 0
 #define WHITE 1
 
-#ifndef ARDUINO
-inline void delay(uint16_t ms)
-{
-    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
-};
-#endif
-
 class NexusClock
 {
     DisplayDriver& display;
