@@ -2,11 +2,12 @@
 
 void NexusClock::loop(void)
 {
-    clockFace.initialize(BLACK);
+    display.fillRect(0, 0, display.width(), display.height(), background);
+    clockFace.initialize(foreground);
 
-    clockFace.draw(displayTime, WHITE);
+    clockFace.draw(displayTime, background);
     pulse(displayTime);
-    clockFace.draw(displayTime, BLACK);
+    clockFace.draw(displayTime, foreground);
 
     display.refresh();
     delay(900); // to account for slow refresh rate
@@ -22,7 +23,7 @@ bool NexusClock::setup(void)
 
     display.clearDisplay();
 
-    clockFace.initialize(BLACK);
+    clockFace.initialize(foreground);
     display.refresh();
 
     return true;
@@ -49,11 +50,11 @@ void pulse(tm& time)
     }
 }
 
-NexusClock* GetNexusClock(tm& time, int face)
+NexusClock* GetNexusClock(tm& time, int face, bool dark)
 {
     DisplayDriver* display = GetDisplayDriver();
     IClockFace* clockFace = GetClockFace(face, display);
-    NexusClock* clk = new NexusClock(*display, *clockFace, time);
+    NexusClock* clk = new NexusClock(*display, *clockFace, time, dark ? WHITE : BLACK, dark ? BLACK : WHITE);
     return clk;
 }
 

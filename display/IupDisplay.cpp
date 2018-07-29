@@ -16,7 +16,7 @@ bool IupDisplay::begin()
 
     // This is a hack. We need to wait for the render to complete before
     // we can return.
-    std::this_thread::sleep_for(100ms);
+    std::this_thread::sleep_for(1000ms);
 
     return true;
 }
