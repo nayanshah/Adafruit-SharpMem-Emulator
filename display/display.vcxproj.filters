@@ -24,16 +24,16 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ClockFace.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NexusClock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="AdafruitGFX\Adafruit_GFX.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AdafruitGFX\glcdfont.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NexusClock\ClockFace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NexusClock\NexusClock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,15 +44,6 @@
     <ClInclude Include="IupDisplay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DisplayDriver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ClockFace.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NexusClock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="WProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -60,6 +51,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AdafruitGFX\gfxfont.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NexusClock\ClockFace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NexusClock\DisplayDriver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NexusClock\NexusClock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

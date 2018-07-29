@@ -122,19 +122,19 @@
   <ItemGroup>
     <ClCompile Include="AdafruitGFX\Adafruit_GFX.cpp" />
     <ClCompile Include="AdafruitGFX\glcdfont.c" />
-    <ClCompile Include="ClockFace.cpp" />
     <ClCompile Include="IupDisplay.cpp" />
-    <ClCompile Include="NexusClock.cpp" />
+    <ClCompile Include="NexusClock\ClockFace.cpp" />
+    <ClCompile Include="NexusClock\NexusClock.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdafruitGFX\Adafruit_GFX.h" />
     <ClInclude Include="AdafruitGFX\gfxfont.h" />
     <ClInclude Include="Adafruit_Iup.h" />
-    <ClInclude Include="ClockFace.h" />
-    <ClInclude Include="DisplayDriver.h" />
     <ClInclude Include="IupDisplay.h" />
-    <ClInclude Include="NexusClock.h" />
+    <ClInclude Include="NexusClock\ClockFace.h" />
+    <ClInclude Include="NexusClock\DisplayDriver.h" />
+    <ClInclude Include="NexusClock\NexusClock.h" />
     <ClInclude Include="WProgram.h" />
   </ItemGroup>
   <ItemGroup>

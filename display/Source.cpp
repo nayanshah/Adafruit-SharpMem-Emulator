@@ -1,4 +1,4 @@
-#include "NexusClock.h"
+#include "NexusClock/NexusClock.h"
 
 tm getCurrentTime()
 {
