@@ -1,23 +1,11 @@
 #pragma once
 #include <ctime>
-#include <cinttypes>
 
 #ifdef ARDUINO
 #include <Adafruit_GFX.h>
 #else
-
-#include <algorithm>
 #include "Adafruit_GFX.h"
-
-#define PI 3.14159265
-using namespace std;
 #endif
-
-
-inline double deg(double degree)
-{
-    return (degree)* PI / 180;
-}
 
 class IClockFace
 {
@@ -61,8 +49,6 @@ class DigitalClockFace : public IClockFace
     double hour, minute, second;
 
     static const int16_t DegHour = 30, DegMin = 6, DegSec = 6;
-
-    void DrawHand(double degrees, double length, bool thick, uint16_t color);
 
 public:
     DigitalClockFace(Adafruit_GFX &disp) : display(disp)

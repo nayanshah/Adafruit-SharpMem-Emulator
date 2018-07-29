@@ -7,8 +7,8 @@
 
 void StandardClockFace::DrawHand(double degrees, double length, bool thick, uint16_t color)
 {
-    auto x = cos(deg(90 - degrees)) * length;
-    auto y = sin(deg(90 - degrees)) * length;
+    auto x = cos(radians(90 - degrees)) * length;
+    auto y = sin(radians(90 - degrees)) * length;
 
     display.drawLine(static_cast<int16_t>(mid_x), static_cast<int16_t>(mid_y), static_cast<int16_t>(mid_x + x), static_cast<int16_t>(mid_y - y), color);
 

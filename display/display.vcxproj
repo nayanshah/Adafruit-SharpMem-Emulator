@@ -135,7 +135,7 @@
     <ClInclude Include="GFXFont.h" />
     <ClInclude Include="IupDisplay.h" />
     <ClInclude Include="NexusClock.h" />
-    <ClInclude Include="Platform.h" />
+    <ClInclude Include="WProgram.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\external\cd-5.11.1_Win64_dll15_lib\cd.dll">
